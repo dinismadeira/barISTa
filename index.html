@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <title>barISTa</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="barista.css">
+    <!--<script src="jquery-2.0.3.min.js"></script>-->
+    <!--<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js'></script>-->
+    <!--<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js'></script>-->
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="jquery.nicescroll.min.js"></script>
+    <script src="barista.js"></script>
+    <script src="barista-menu.js"></script>
+    <script src="barista-karaoke.js"></script>
+  </head>
+
+  <body>
+    <div id="well">
+      <h2><strong id="slider"></strong> <span>Arraste à direita</span></h2>
+    </div>
+    <div id="unlocked" style="height: 100%">
+      <div id="popupContainer">
+        <div id="popupFlexContainer">
+          <div id="popup">
+            <div id="popupText"></div>
+            <div id="popupButtons">
+              <span class="link" id="popupOKButton">OK</span>
+              <span class="link" id="popupCancelButton">Cancelar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- MAIN MENU PAGE -->
+      <div id="mainPage" class="page">
+        <div class="pageFlexContainer">
+          <table id="mainMenuTable">
+            <tr>
+              <td><a href="#menu"><span class="mainMenuButton"><img alt="Cardápio" src="images/menu.png" />Cardápio</span></a></td>
+              <td><a href="#pedidos"><span class="mainMenuButton"><img alt="Pedidos" src="images/pedidos.png" />Ver Conta</span></a></td>
+            </tr>
+            <tr>
+              <td><a href="#karaoke"><span class="mainMenuButton"><img alt="Karaoke" src="images/karaoke.png" />Karaoke</span></a></td>
+              <td><a href="#pagar"><span class="mainMenuButton"><img alt="Pagar" src="images/pagar.png" />Pagar</span></a></td>
+            </tr>
+            <tr>
+              <td><a href="#help"><span class="mainMenuButton mainMenuButtonSmall">Ajuda</span></a></td>
+              <td><span class="lockButton mainMenuButton mainMenuButtonSmall link">Bloquear</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- MENU PAGE -->
+      <div id="menuPage" class="page">
+        <div class="pageFlexContainer">
+          <table id="menuTable">
+            <tbody>
+              <tr>
+                <td><span class="pageTitle">Cardápio</span></td>
+                <td>
+                  <div class="buttonsTop">
+                    <span class="helpButton">Ajuda</span>
+                    <span class="backButton">Voltar</span>
+                    <span class="lockButton">Bloquear</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td id="menuLeft">
+                  <table style="width: 100%;">
+                    <tr style="height: 50%;">
+                      <td>
+                        <div id="menuCatsContainer">
+                          <div class="pageCats" id="menuCats">
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr style="height: 50%;">
+                      <td>
+                        <div id="menuReqScrollableDiv" style="overflow-y:auto">
+                          <table id="menuReqTable" style="width: 100%; text-align: left;">
+                            <thead><tr><td id="reqListTitle" colspan="3">Vais Pedir:</td></tr></thead>
+                            <tfoot><tr><td colspan="3" id="reqListTotal"></td></tr></tfoot>
+                            <tbody id="reqListBody"><!-- populated with requests --></tbody>
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td id="menuRight">
+                  <table style="width: 100%; height:100%">
+                    <tr style="height:100%">
+                      <td style="vertical-align: top;">
+                        <div class="pageList" id="menuItemList">
+                          <table class="pageListTable" id="menuItemTable">
+                            <thead id="menuItemTableHead"><tr><td>ID</td><td colspan="2">Nome</td><td>Preço</td><td colspan="3">Pedir</td></tr></thead>
+                            <tbody id="menuItemTableBody"><!-- populated with items --></tbody>
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="buttonsBottom">
+                          <span id="searchItemsButton">Procurar Artigo</span>
+                          <span id="reqConfButton">Finalizar Pedido</span>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- PEDIDOS PAGE -->
+      <div id="pedidosPage" class="page">
+        <div class="pageFlexContainer">
+          <div class="pageTable">
+            <div class="pageTableRight">
+              <div class="buttonsTop">
+                <span class="pageTitle" style="min-width: 33%;">Conta</span>
+                <span class="helpButton">Ajuda</span>
+                <span class="backButton">Voltar</span>
+                <span class="lockButton">Bloquear</span>
+              </div>
+              <div class="pageList" id="pedidosList">
+                <table class="pageListTable" id="pedidosTable">
+                  <thead><tr><td>ID</td><td colspan="2">Nome</td><td>Preço</td><td>Quant.</td><td>Total</td></tr>
+                  <tfoot><tr><td colspan="6" id="pedidosTotal"></td></tr></tfoot>
+                  <tbody id="pedidosTableBody"><!-- populated with pedidos --></tbody>
+                </table>
+              </div>
+              <div class="buttonsBottom">
+                <span onclick="window.location = '#menu';">Ir para o Cardápio</span>
+                <span onclick="window.location = '#pagar';">Pagar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- KARAOKE PAGE -->
+      <div id="karaokePage" class="page">
+        <div class="pageFlexContainer">
+          <div class="pageTable">
+            <div class="pageTableLeft">
+              <span class="pageTitle">Karaoke</span>
+              <div id="karaokeCatsContainer">
+                <div class="pageCats" id="karaokeCats"><!-- populated with categories --></div>
+              </div>
+            </div>
+            <div class="pageTableRight">
+              <div class="buttonsTop">
+                <span class="helpButton">Ajuda</span>
+                <span class="backButton">Voltar</span>
+                <span class="lockButton">Bloquear</span>
+              </div>
+              <div id="karaokeChosenMusicContainer">
+                <span id="karaokeChosenMusic" class="link"><!-- chosen music --></span>
+                <span id="karaokeCancelMusicButton" class="button buttonRed">Cancelar</span>
+              </div>
+              <div class="pageList" id="karaokeMusicList">
+                <table class="pageListTable" id="karaokeMusicTable"><!-- populated with musics --></table>
+              </div>
+              <div class="buttonsBottom">
+                <span id="searchMusicButton">Procurar Música</span>
+                <span id="karaokePlayingButton">A Tocar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
